@@ -51,7 +51,7 @@ namespace SaraHamilton.Controllers
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            return View(_db.Posts);
+            return View();
         }
     }
 }

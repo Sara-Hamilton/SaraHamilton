@@ -38,7 +38,7 @@
                         var stringResult = '<ul>';
                         for (var i = 0; i < result.length; i++) 
                         {
-                            stringResult += '<li><strong>' + result[i].title + '</strong> : ' + result[i].content + '<a href = "Posts/Edit">Edit</a></li>';
+                            stringResult += '<li> id: ' + result[i].postId + ' <strong>' + result[i].title + '</strong> : ' + result[i].content + '<a href = "Posts/Edit/'+ result[i].postId+'">Edit</a></li>';
                         } 
                         stringResult += '</ul>';
                         $('#show-all-posts').html(stringResult);
