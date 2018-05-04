@@ -14,18 +14,48 @@
         $(document).ready(function () {
 
              $('.new-post').submit(function (event) {
-            event.preventDefault();
+                event.preventDefault();
+                    $.ajax({
+                        url: '@Url.Action("NewPost")',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $(this).serialize(),
+                        success: function (result) {
+                            var resultMessage = 'You\'ve added a new post to the database!<br>Title: ' + result.title + '<br>Content: ' + result.content;
+                            $('#create-post').html(resultMessage);
+                        }
+                    });
+                });
+
+             $('.display-posts').submit(function (event) {
+                event.preventDefault();
                 $.ajax({
-                    url: '@Url.Action("NewPost")',
-                    type: 'POST',
-                    dataType: 'json',
+                    url: '@Url.Action("ShowAllPosts")',
+                    type: 'GET',
                     data: $(this).serialize(),
+                    dataType: 'json',
                     success: function (result) {
-                        var resultMessage = 'You\'ve added a new post to the database!<br>Title: ' + result.title + '<br>Content: ' + result.content;
-                        $('#create-post').html(resultMessage);
+                        var stringResult = '<ul>';
+                        for (var i = 0; i < result.length; i++) 
+                        {
+                            stringResult += '<li><strong>' + result[i].title + '</strong> : ' + result[i].content + '<a href = "Posts/Edit">Edit</a></li>';
+                        } 
+                        stringResult += '</ul>';
+                        $('#show-all-posts').html(stringResult);
                     }
                 });
             });
+
+            $('.edit-post').click(function () {
+                  $.ajax({
+                    type: 'GET',
+                    dataType: 'html',
+                    url: '@Url.Action("EditPost")',
+                      success: function (result) {
+                      $('#edit-post').html(result);
+                    }
+                  });
+                });
 
         });
     </script>
@@ -41,6 +71,15 @@
         <button type="submit">Submit</button>
     </form>
     <div id="create-post"></div>
+
+    <form action="AllPostsList" class="display-posts">
+        <button type="submit">Show All Posts</button>
+    </form>
+    <div id="show-all-posts"></div>
+
+    <h2>Edit a Post</h2>
+    <h4 class="edit-post"><button>Edit a post</button></h4>
+
 
 </body>
 </html>

@@ -46,5 +46,12 @@ namespace SaraHamilton.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Edit()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            return View(_db.Posts);
+        }
     }
 }

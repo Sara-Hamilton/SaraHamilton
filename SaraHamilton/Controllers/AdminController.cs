@@ -43,5 +43,11 @@ namespace SaraHamilton.Controllers
             _db.SaveChanges();
             return Json(newPost);
         }
+
+        public IActionResult ShowAllPosts()
+        {
+            var allPostsList = _db.Posts;
+            return Json(allPostsList);
+        }
     }
 }
