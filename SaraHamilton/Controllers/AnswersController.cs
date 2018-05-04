@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SaraHamilton.Controllers
 {
-    public class AnswerController : Controller
+    public class AnswersController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
