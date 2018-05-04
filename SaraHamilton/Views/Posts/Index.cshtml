@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+@model IEnumerable<SaraHamilton.Models.Post>
+
+<h2>Posts</h2>
+<hr />
+
+@if (Model.Any())
+{
+    @*<ul>*@
+    @foreach (var listPost in Model)
+    {
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h3><a href="~/Questions/DetailsAuthenticated/@listPost.PostId">@Html.DisplayFor(modelPost => listPost.Title)</a></h3><p>@listPost.Comments.Count() Answers</p>
+        }
+        else
+        {
+            <h3><a href="~/Posts/Details/@listPost.PostId">@Html.DisplayFor(modelQuestion => listPost.Title)</a></h3><p>@listPost.Comments.Count() Comments</p>
+        }
+    }
+    @*</ul>*@
+
+}
+else
+{
+    <p>No posts have been added yet!</p>
+}
+
+@Html.ActionLink("Create new", "Create")
