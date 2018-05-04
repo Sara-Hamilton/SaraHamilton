@@ -50,5 +50,21 @@ namespace SaraHamilton.Controllers
             return Json(allPostsList);
         }
 
+        [HttpPost]
+        public IActionResult DeletePost(int postId)
+        {
+            var postToDelete = _db.Posts.FirstOrDefault(x => x.PostId == postId);
+            if (postToDelete == null)
+            {
+                return Json(postToDelete);
+            }
+            else
+            {
+                _db.Remove(postToDelete);
+                _db.SaveChanges();
+                return Json(postToDelete);
+            }
+        }
+
     }
 }

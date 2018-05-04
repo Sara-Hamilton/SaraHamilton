@@ -59,6 +59,20 @@
                 });
            });*@
 
+            $('.delete-post').submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: '@Url.Action("DeletePost")',
+                type: 'POST',
+                dataType: 'json',
+                data: $(this).serialize(),
+                success: function (result) {
+                    var resultMessage = 'The post with id ' + result.postId + ' has been deleted';
+                    $('#confirm-delete').html(resultMessage);
+                }
+            });
+        });
+
         });
     </script>
 </head>
@@ -85,7 +99,7 @@
         <input type="number" name="postID" />
         <button type="submit">Delete post</button>
     </form>
-    <div id="result4"></div>
+    <div id="confirm-delete"></div>
 
 
 
