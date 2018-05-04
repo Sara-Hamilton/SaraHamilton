@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AJAX Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+             $('.new-post').submit(function (event) {
+            event.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("NewPost")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        var resultMessage = 'You\'ve added a new post to the database!<br>Title: ' + result.title + '<br>Content: ' + result.content;
+                        $('#create-post').html(resultMessage);
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+    <h3>Create a new post.</h3>
+    <form action="NewPost" class="new-post">
+        <label for="newTitle">Title: </label>
+        <input type="text" name="newTitle" />
+        <label for="newContent">Content: </label>
+        <input type="text" name="newContent" />
+        <button type="submit">Submit</button>
+    </form>
+    <div id="create-post"></div>
+
+</body>
+</html>
