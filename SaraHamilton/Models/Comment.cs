@@ -11,6 +11,7 @@ namespace SaraHamilton.Models
     public class Comment
     {
         public int CommentId { get; set; }
+        public int PostId { get; set; }
         [ForeignKey("UserId")]
         public string UserId { get; set; }
         public string Body { get; set; }
