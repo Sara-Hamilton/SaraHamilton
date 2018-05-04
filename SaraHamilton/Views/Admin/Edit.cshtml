@@ -1,10 +1,11 @@
-﻿@{
+﻿@*{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @using System.Security.Claims
-@using SaraHamilton.Models
+@model SaraHamilton.Models.Post
+
 
 <h4>Edit this Post :@Html.DisplayFor(model => model.Title)</h4>
 
@@ -19,6 +20,6 @@
     @Html.EditorFor(model => model.Content)
 
     <input type="submit" value="Save" class="btn btn-default" />
-}
+}*@
 
 

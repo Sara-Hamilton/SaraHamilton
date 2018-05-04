@@ -50,6 +50,5 @@ namespace SaraHamilton.Controllers
             return Json(allPostsList);
         }
 
-        
     }
 }

@@ -46,16 +46,18 @@
                 });
             });
 
-            $('.edit-post').click(function () {
-                  $.ajax({
+            @*$('.display-edit-form').submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("Edit/")',
                     type: 'GET',
-                    dataType: 'html',
-                    url: '@Url.Action("EditPost")',
-                      success: function (result) {
-                      $('#edit-post').html(result);
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#result4').html(stringResult);
                     }
-                  });
                 });
+           });*@
 
         });
     </script>
@@ -77,13 +79,13 @@
     </form>
     <div id="show-all-posts"></div>
 
-    <h2>Edit a Post</h2>
-    <form action="Edit" class="edit-post">
-        <label for="postId">Enter the Id of the post to edit: </label>
+    <h2>Delete a Post</h2>
+    <form action="Delete" class="delete-post">
+        <label for="postId">Enter the Id of the post to delete: </label>
         <input type="number" name="postID" />
-        <button type="submit">Edit a post</button>
+        <button type="submit">Delete post</button>
     </form>
-    <div id="edit=post-form"></div>
+    <div id="result4"></div>
 
 
 
