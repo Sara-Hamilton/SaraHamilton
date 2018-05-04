@@ -11,7 +11,6 @@
 
 @if (Model.Any())
 {
-    @*<ul>*@
     @foreach (var listPost in Model)
     {
         <h3>@Html.DisplayFor(modelPost => listPost.Title)</h3>
@@ -20,13 +19,16 @@
         @if (@listPost.Comments == null)
         {
             <p>No Comments yet.</p>
+            <p><a href="~/Comments/Create/@listPost.PostId">Add a Comment</a></p>
+            <p><a href="~/Posts/Details/@listPost.PostId">View Comments</a></p>
         }
         else
         {
-            <p>@listPost.Comments.Count() Comments</p>}
+            <p>@listPost.Comments.Count() Comments</p>
+            <p><a href="~/Comments/Create/@listPost.PostId">Add a Comment</a></p>
+            <p><a href="~/Posts/Details/@listPost.PostId">View Comments</a></p>
+        }
     }
-    @*</ul>*@
-
 }
 else
 {
