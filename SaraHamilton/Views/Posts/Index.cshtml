@@ -14,14 +14,16 @@
     @*<ul>*@
     @foreach (var listPost in Model)
     {
-        @if (User.Identity.IsAuthenticated)
+        <h3>@Html.DisplayFor(modelPost => listPost.Title)</h3>
+        <p>@Html.DisplayFor(modelPost => listPost.Content)</p>
+
+        @if (@listPost.Comments == null)
         {
-            <h3><a href="~/Questions/DetailsAuthenticated/@listPost.PostId">@Html.DisplayFor(modelPost => listPost.Title)</a></h3><p>@listPost.Comments.Count() Answers</p>
+            <p>No Comments yet.</p>
         }
         else
         {
-            <h3><a href="~/Posts/Details/@listPost.PostId">@Html.DisplayFor(modelQuestion => listPost.Title)</a></h3><p>@listPost.Comments.Count() Comments</p>
-        }
+            <p>@listPost.Comments.Count() Comments</p>}
     }
     @*</ul>*@
 
