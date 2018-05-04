@@ -38,7 +38,7 @@
                         var stringResult = '<ul>';
                         for (var i = 0; i < result.length; i++) 
                         {
-                            stringResult += '<li> id: ' + result[i].postId + ' <strong>' + result[i].title + '</strong> : ' + result[i].content + '<a href = "Posts/Edit/'+ result[i].postId+'">Edit</a></li>';
+                            stringResult += '<li> id: ' + result[i].postId + ' <strong>' + result[i].title + '</strong> : ' + result[i].content + '<a href = "Posts/Edit/'+ result[i].postId +'">Edit</a></li>';
                         } 
                         stringResult += '</ul>';
                         $('#show-all-posts').html(stringResult);
@@ -78,7 +78,13 @@
     <div id="show-all-posts"></div>
 
     <h2>Edit a Post</h2>
-    <h4 class="edit-post"><button>Edit a post</button></h4>
+    <form action="Edit" class="edit-post">
+        <label for="postId">Enter the Id of the post to edit: </label>
+        <input type="number" name="postID" />
+        <button type="submit">Edit a post</button>
+    </form>
+    <div id="edit=post-form"></div>
+
 
 
 </body>

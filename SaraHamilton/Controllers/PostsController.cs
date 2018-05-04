@@ -47,11 +47,20 @@ namespace SaraHamilton.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Edit()
+        public async Task<IActionResult> Edit(int id)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            return View();
+            var postToEdit = _db.Posts.FirstOrDefault(x => x.PostId == id);
+            return View(postToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Post post)
+        {
+            _db.Entry(post).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

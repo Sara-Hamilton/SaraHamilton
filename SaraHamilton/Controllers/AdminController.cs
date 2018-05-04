@@ -49,5 +49,7 @@ namespace SaraHamilton.Controllers
             var allPostsList = _db.Posts;
             return Json(allPostsList);
         }
+
+        
     }
 }
