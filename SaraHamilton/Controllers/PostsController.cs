@@ -46,5 +46,18 @@ namespace SaraHamilton.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // AJAX method for creating a new post
+        [HttpPost]
+        public async Task<IActionResult> NewPost(string newTitle, string newContent)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            Post newPost = new Post(newTitle, newContent);
+            newPost.User = currentUser;
+            _db.Posts.Add(newPost);
+            _db.SaveChanges();
+            return Json(newPost);
+        }
     }
 }

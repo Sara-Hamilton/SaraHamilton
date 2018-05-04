@@ -37,5 +37,14 @@ namespace SaraHamilton.Models
         {
             return this.PostId.GetHashCode();
         }
+
+        public Post(string title, string content, int id = 0)
+        {
+            Title = title;
+            Content = content;
+            PostId = id;
+        }
+
+        public Post() { }
     }
 }
