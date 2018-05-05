@@ -13,6 +13,7 @@
 {
     @foreach (var listPost in Model)
     {
+    <div class="well">
         <h3>@Html.DisplayFor(modelPost => listPost.Title)</h3>
         <p>@Html.DisplayFor(modelPost => listPost.Content)</p>
 
@@ -23,10 +24,14 @@
         }
         else
         {
-            <p>@listPost.Comments.Count() Comments</p>
+            <p>@listPost.Comments.Count() Comment(s)</p>
             <p><a href="~/Comments/Create/@listPost.PostId">Add a Comment</a></p>
-            <p><a href="~/Posts/Details/@listPost.PostId">View Comments</a></p>
+            @if (listPost.Comments.Count != 0)
+            {
+                <p><a href="~/Posts/Details/@listPost.PostId">View Comments</a></p>
+            }
         }
+    </div>
     }
 }
 else

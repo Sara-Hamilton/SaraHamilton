@@ -24,11 +24,16 @@ namespace SaraHamilton.Controllers
             _db = db;
         }
 
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        //    var currentUser = await _userManager.FindByIdAsync(userId);
+        //    return View(_db.Posts.Where(x => x.User.Id == currentUser.Id));
+        //}
+
+        public IActionResult Index()
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-            return View(_db.Posts.Where(x => x.User.Id == currentUser.Id));
+            return View(_db.Posts.Include(post => post.Comments));
         }
 
         public IActionResult Create()
@@ -61,6 +66,13 @@ namespace SaraHamilton.Controllers
             _db.Entry(post).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("Index", "Admin");
+        }
+
+        public IActionResult Details(int id)
+        {
+            ViewBag.UserId = null;
+            var data = _db.Posts.Include(post => post.Comments).Include(post => post.User).FirstOrDefault(x => x.PostId == id);
+            return View("Details", data);
         }
     }
 }

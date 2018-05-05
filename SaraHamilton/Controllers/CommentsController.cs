@@ -37,7 +37,6 @@ namespace SaraHamilton.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             ViewBag.VBPostId = id;
-            //TempData["Message"] = id;
             return View();
         }
 
@@ -56,20 +55,5 @@ namespace SaraHamilton.Controllers
             return RedirectToAction("Index");
         }
 
-        //public async Task<IActionResult> Create(int id)
-        //{
-        //    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        //    var currentUser = await _userManager.FindByIdAsync(userId);
-        //    ViewBag.ProductId = new SelectList(_db.Posts, "PostId", "Name");
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Create(Comment comment)
-        //{
-        //    _db.Save(comment);
-           
-        //    return RedirectToAction("Index");
-        //}
     }
 }

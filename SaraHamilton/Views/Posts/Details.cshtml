@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+@model SaraHamilton.Models.Post
+
+<div class="well">
+    <h2>@Model.Title</h2>
+    <hr />
+    <p>@Model.Content</p>
+</div>
+
+@if (Model.Comments != null)
+{
+    <h3>Comments</h3>
+    @foreach (var listComment in @Model.Comments)
+    {
+        <div class="well">
+            <p>@listComment.Body</p>
+            <p>- @listComment.User</p>
+        </div>
+    }
+}
