@@ -111,42 +111,51 @@
 </head>
 <body>
 
-    <h2>Create a new post</h2>
-    <form action="NewPost" class="new-post">
-        <label for="newTitle">Title: </label>
-        <input type="text" name="newTitle" />
-        <label for="newContent">Content: </label>
-        <input type="text" name="newContent" />
-        <button type="submit">Submit</button>
-    </form>
-    <div id="create-post"></div>
+    <div class="well">
+        <h2>Create a new post</h2>
+        <form action="NewPost" class="new-post">
+            <label for="newTitle">Title: </label>
+            <input type="text" name="newTitle" />
+            <label for="newContent">Content: </label>
+            <input type="text" name="newContent" />
+            <button type="submit">Submit</button>
+        </form>
+        <div id="create-post"></div>
+    </div>
 
-    <form action="AllPostsList" class="display-posts">
-        <button type="submit">Show All Posts</button>
-    </form>
-    <div id="show-all-posts"></div>
+    <div class="well">
+        <form action="AllPostsList" class="display-posts">
+            <button type="submit">Show All Posts</button>
+        </form>
+        <div id="show-all-posts"></div>
+    </div>
 
-    <h2>Delete a Post</h2>
-    <form action="Delete" class="delete-post">
-        <label for="postId">Enter the Id of the post to delete: </label>
-        <input type="number" name="postID" />
-        <button type="submit">Delete post</button>
-    </form>
-    <div id="confirm-delete"></div>
+    <div class="well">
+        <h2>Delete a Post</h2>
+        <form action="Delete" class="delete-post">
+            <label for="postId">Enter the Id of the post to delete: </label>
+            <input type="number" name="postID" />
+            <button type="submit">Delete post</button>
+        </form>
+        <div id="confirm-delete"></div>
+    </div>
 
-    <form action="AllCommentsList" class="display-comments">
-        <button type="submit">Show All Comments</button>
-    </form>
-    <div id="show-all-comments"></div>
+    <div class="well">
+        <form action="AllCommentsList" class="display-comments">
+            <button type="submit">Show All Comments</button>
+        </form>
+        <div id="show-all-comments"></div>
+    </div>
 
-    <h2>Delete a Comment</h2>
-    <form action="DeleteComment" class="delete-comment">
-        <label for="postId">Enter the Id of the comment to delete: </label>
-        <input type="number" name="commentID" />
-        <button type="submit">Delete comment</button>
-    </form>
-    <div id="confirm-delete-comment"></div>
-
+    <div class="well">
+        <h2>Delete a Comment</h2>
+        <form action="DeleteComment" class="delete-comment">
+            <label for="postId">Enter the Id of the comment to delete: </label>
+            <input type="number" name="commentID" />
+            <button type="submit">Delete comment</button>
+        </form>
+        <div id="confirm-delete-comment"></div>
+    </div>
 
 </body>
 </html>
