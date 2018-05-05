@@ -1,0 +1,26 @@
+﻿@model SaraHamilton.Models.Comment
+
+@{
+    ViewData["Title"] = " Comment - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add a new comment</h2>
+<hr />
+@*@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Body)<br />
+    @Html.EditorFor(model => model.Body)<br />
+
+    @Html.HiddenFor(model => model.PostId)<br />
+    @Html.HiddenFor(model => model.CommentId)<br />
+    <input type="submit" value="Create" />
+}*@
+
+<form class="form-group" action="/Comments/Create" method="post">
+    <label>Your Comment:</label>
+    <textarea rows="8" cols="200" class="form-control" type="text" name="body"></textarea>
+    <input type="hidden" name="postId" value=@ViewBag.VBPostId />
+    <br />
+    <button class="btn">Add Comment</button>
+</form>

@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using SaraHamilton.Models;
 using SaraHamilton.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SaraHamilton.Controllers
 {
@@ -31,6 +32,15 @@ namespace SaraHamilton.Controllers
             return View(_db.Comments.Where(x => x.User.Id == currentUser.Id));
         }
 
+        public async Task<IActionResult> Create(int id)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            ViewBag.VBPostId = id;
+            //TempData["Message"] = id;
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create()
         {
@@ -43,7 +53,23 @@ namespace SaraHamilton.Controllers
             comment.UserId = currentUser.Id;
             _db.Comments.Add(comment);
             _db.SaveChanges();
-            return RedirectToAction("Details", "Questions", new { id = routeId });
+            return RedirectToAction("Index");
         }
+
+        //public async Task<IActionResult> Create(int id)
+        //{
+        //    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        //    var currentUser = await _userManager.FindByIdAsync(userId);
+        //    ViewBag.ProductId = new SelectList(_db.Posts, "PostId", "Name");
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> Create(Comment comment)
+        //{
+        //    _db.Save(comment);
+           
+        //    return RedirectToAction("Index");
+        //}
     }
 }
