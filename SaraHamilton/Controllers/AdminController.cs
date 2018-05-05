@@ -71,5 +71,21 @@ namespace SaraHamilton.Controllers
             return Json(allCommentsList);
         }
 
+        [HttpPost]
+        public IActionResult DeleteComment(int commentId)
+        {
+            var commentToDelete = _db.Comments.FirstOrDefault(x => x.CommentId == commentId);
+            if (commentToDelete == null)
+            {
+                return Json(commentToDelete);
+            }
+            else
+            {
+                _db.Remove(commentToDelete);
+                _db.SaveChanges();
+                return Json(commentToDelete);
+            }
+        }
+
     }
 }

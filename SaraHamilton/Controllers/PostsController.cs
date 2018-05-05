@@ -70,8 +70,6 @@ namespace SaraHamilton.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            //var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //var currentUser = await _userManager.FindByIdAsync(userId);
             var allUsers = await _userManager.Users.ToListAsync();
             var data =  _db.Posts.Include(post => post.Comments).Include(post => post.User).FirstOrDefault(x => x.PostId == id);
             return View("Details", data);

@@ -92,12 +92,26 @@
                 });
             });
 
+            $('.delete-comment').submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("DeleteComment")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        var resultMessage = 'The comment with id ' + result.commentId + ' has been deleted';
+                        $('#confirm-delete-comment').html(resultMessage);
+                    }
+                });
+            });
+
         });
     </script>
 </head>
 <body>
 
-    <h3>Create a new post.</h3>
+    <h2>Create a new post</h2>
     <form action="NewPost" class="new-post">
         <label for="newTitle">Title: </label>
         <input type="text" name="newTitle" />
@@ -125,6 +139,13 @@
     </form>
     <div id="show-all-comments"></div>
 
+    <h2>Delete a Comment</h2>
+    <form action="DeleteComment" class="delete-comment">
+        <label for="postId">Enter the Id of the comment to delete: </label>
+        <input type="number" name="commentID" />
+        <button type="submit">Delete comment</button>
+    </form>
+    <div id="confirm-delete-comment"></div>
 
 
 </body>
