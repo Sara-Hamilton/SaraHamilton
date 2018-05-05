@@ -65,5 +65,11 @@ namespace SaraHamilton.Controllers
             }
         }
 
+        public IActionResult ShowAllComments()
+        {
+            var allCommentsList = _db.Comments;
+            return Json(allCommentsList);
+        }
+
     }
 }

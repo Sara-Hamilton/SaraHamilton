@@ -60,18 +60,37 @@
            });*@
 
             $('.delete-post').submit(function (event) {
-            event.preventDefault();
-            $.ajax({
-                url: '@Url.Action("DeletePost")',
-                type: 'POST',
-                dataType: 'json',
-                data: $(this).serialize(),
-                success: function (result) {
-                    var resultMessage = 'The post with id ' + result.postId + ' has been deleted';
-                    $('#confirm-delete').html(resultMessage);
-                }
+                event.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("DeletePost")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        var resultMessage = 'The post with id ' + result.postId + ' has been deleted';
+                        $('#confirm-delete').html(resultMessage);
+                    }
+                });
             });
-        });
+
+            $('.display-comments').submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("ShowAllComments")',
+                    type: 'GET',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function (result) {
+                        var stringResult = '<ul>';
+                        for (var i = 0; i < result.length; i++) 
+                        {
+                            stringResult += '<li> post id: ' + result[i].postId + ' <strong>comment id: ' + result[i].commentId + '</strong> ' + result[i].body + ' </li>';
+                        } 
+                        stringResult += '</ul>';
+                        $('#show-all-comments').html(stringResult);
+                    }
+                });
+            });
 
         });
     </script>
@@ -100,6 +119,11 @@
         <button type="submit">Delete post</button>
     </form>
     <div id="confirm-delete"></div>
+
+    <form action="AllCommentsList" class="display-comments">
+        <button type="submit">Show All Comments</button>
+    </form>
+    <div id="show-all-comments"></div>
 
 
 
