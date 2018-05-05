@@ -68,10 +68,12 @@ namespace SaraHamilton.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            ViewBag.UserId = null;
-            var data = _db.Posts.Include(post => post.Comments).Include(post => post.User).FirstOrDefault(x => x.PostId == id);
+            //var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //var currentUser = await _userManager.FindByIdAsync(userId);
+            var allUsers = await _userManager.Users.ToListAsync();
+            var data =  _db.Posts.Include(post => post.Comments).Include(post => post.User).FirstOrDefault(x => x.PostId == id);
             return View("Details", data);
         }
     }

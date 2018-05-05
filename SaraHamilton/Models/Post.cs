@@ -46,5 +46,10 @@ namespace SaraHamilton.Models
         }
 
         public Post() { }
+
+        internal Task ToListAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
