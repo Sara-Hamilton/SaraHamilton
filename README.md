@@ -109,6 +109,13 @@ $ cd SaraHamilton
 ```
 $ dotnet run
 ```
+* _Administrator Functionality_
+
+To login as an administrator:
+```
+	email: Admin
+	password: supersecretpassword
+```
 
 ### License
 
