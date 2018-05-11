@@ -31,6 +31,7 @@ namespace SaraHamilton
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddMvc();
             services.AddEntityFrameworkMySql()
                 .AddDbContext<ApplicationDbContext>(options =>
@@ -51,8 +52,9 @@ namespace SaraHamilton
         }
 
         
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IDbInitializer dbInitializer)
         {
+            dbInitializer.Initialize();
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
