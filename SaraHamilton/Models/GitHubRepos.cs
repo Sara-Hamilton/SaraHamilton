@@ -17,5 +17,31 @@ namespace SaraHamilton.Models
         public string Description { get; set; }
         public string Language { get; set; }
         public string Location { get; set; }
+
+
+        public static List<GitHubRepos> GetGitHubRepos()
+        {
+            var client = new RestClient("https://api.github.com");
+            var request = new RestRequest("https://api.github.com/users/Sara-Hamilton/starred?sort=created&direction=asc", MethodAccessException.GET) { RequestFormat = DataFormat.Json };
+            request.AddHeader("header", "application/vnd.github.v3+json");
+            request.AddHeader("User-Agent", EnvironmentVariables.AccountUserAgent);
+            var response = new RestResponse();
+            Task.Run(async () =>
+            {
+                response = await GetResponseContentAsync(client, request) as RestResponse;
+            }).Wait();
+            JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(response.Content);
+            var repoList = JsonConvert.DeserializeObject<List<GitHubRepos>>(jsonResponse.ToString());
+            return repoList;
+        }
+
+        public static Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)
+        {
+            var tcs = new TaskCompletionSource<IRestResponse>();
+            theClient.ExecuteAsync(theRequest, response => {
+                tcs.SetResult(response);
+            });
+            return tcs.Task;
+        }
     }
 }
