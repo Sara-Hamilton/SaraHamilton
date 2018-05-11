@@ -31,7 +31,7 @@ namespace SaraHamilton.Controllers
 
         public IActionResult GitHub()
         {
-            var userRepos = GitHubRepos.GetGitHubRepos();
+            var userRepos = GitHubRepos.GetGitHubRepos().Take(3);
             return View(userRepos);
         }
     }
