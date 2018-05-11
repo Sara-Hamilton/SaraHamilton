@@ -113,7 +113,7 @@
             <input type="text" name="newTitle" />
             <label for="newContent">Content: </label>
             <input type="text" name="newContent" />
-            <button type="submit">Submit</button>
+            <button class="btn btn-default" type="submit">Submit</button>
         </form>
         <div id="create-post"></div>
     </div>
@@ -121,9 +121,9 @@
     <div class="well">
         <h2>View and Edit Posts</h2>
         <form action="AllPostsList" class="display-posts">
-            <button type="submit">Show All Posts</button>
+            <button class="btn btn-default" type="submit">Show All Posts</button>
         </form>
-        <button id="hide-posts">Hide Posts</button>
+        <button class="btn btn-default" id="hide-posts">Hide Posts</button>
         <div id="show-all-posts"></div>
     </div>
 
@@ -132,7 +132,7 @@
         <form action="Delete" class="delete-post">
             <label for="postId">Enter the Id of the post to delete: </label>
             <input type="number" name="postID" />
-            <button type="submit">Delete post</button>
+            <button class="btn btn-default" type="submit">Delete post</button>
         </form>
         <div id="confirm-delete"></div>
     </div>
@@ -140,9 +140,9 @@
     <div class="well">
         <h2>View Comments</h2>
         <form action="AllCommentsList" class="display-comments">
-            <button type="submit">Show All Comments</button>
+            <button class="btn btn-default" type="submit">Show All Comments</button>
         </form>
-        <button id="hide-comments">Hide Comments</button>
+        <button class="btn btn-default" id="hide-comments">Hide Comments</button>
         <div id="show-all-comments"></div>
     </div>
 
@@ -151,7 +151,7 @@
         <form action="DeleteComment" class="delete-comment">
             <label for="postId">Enter the Id of the comment to delete: </label>
             <input type="number" name="commentID" />
-            <button type="submit">Delete comment</button>
+            <button class="btn btn-default" type="submit">Delete comment</button>
         </form>
         <div id="confirm-delete-comment"></div>
     </div>
