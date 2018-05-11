@@ -5,7 +5,7 @@
 ## By Sara Hamilton
 
 # Description
-This is the Epicodus weekly project for week 3 of the .NET course.  Its purpose is to display understanding of Visual Studio MVC, ORM, Migrations, and AJAX posts.  
+This is the Epicodus weekly project for weeks 3 and 4 of the .NET course.  Its purpose is to display understanding of Visual Studio MVC, ORM, Migrations, and AJAX posts.  It is a personal portfolio site containing information about me with links to my top 3 starred GitHub repositories.  This site allows for the creating of blog posts and comments.  All visitors to the site may view blog posts and comments and their authors. A visitor may comment on a blog post if they register and login.  Only an admin may create and edit blog posts and delete posts and comments.  
 
 ## Functionality
 ### User Stories
@@ -30,8 +30,15 @@ This is the Epicodus weekly project for week 3 of the .NET course.  Its purpose 
 
   * Comment
     * Body
-    * Author
+    * Author  
 
+  * GitHubRepos
+	* Name 
+    * Html_Url 
+    * Created_At 
+    * Description 
+    * Language 
+    
 ## Technologies Used
 * HTML
 * CSS
@@ -41,6 +48,25 @@ This is the Epicodus weekly project for week 3 of the .NET course.  Its purpose 
 * .NET
 * MySql
 * MAMP
+* GitHub API
+
+## Set up a GitHub account  
+
+Make a free GitHub account. 
+
+## Configure EnvironmentVariables
+
+Open the app solution in Visual Studio.  In the Models folder, create a class named EnvironmentVariables.cs  Add the following code to EnvironmentVariables.cs  Replace the text that is in all caps with your GitHub username or email.  
+
+```
+namespace SaraHamilton.Models
+{
+    public static class EnvironmentVariables
+    {
+        public static string AccountUserAgent = "YOUR ACCOUNT CREDENTIALS HERE";
+    }
+}
+```
 
 ## Run the Application  
 
