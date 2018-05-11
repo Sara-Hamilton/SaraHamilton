@@ -38,12 +38,12 @@ textarea {
 
 .panel > .panel-heading {
     background-image: none;
-    background-color: #BC6F2B;
+    background-color: #C48244;
     color: antiquewhite;
 }
 
 .well {
-    background-color: #A7A897 !important;
+    background-color: #C1C0AC !important;
     color: white;
 }
 
