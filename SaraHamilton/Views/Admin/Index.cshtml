@@ -46,6 +46,10 @@
                 });
             });
 
+            $('#hide-posts').click(function () {
+                $('#show-all-posts').html("");
+             });
+
             $('.delete-post').submit(function (event) {
                 event.preventDefault();
                 $.ajax({
@@ -77,6 +81,10 @@
                         $('#show-all-comments').html(stringResult);
                     }
                 });
+            });
+
+            $('#hide-comments').click(function () {
+                $('#show-all-comments').html("");
             });
 
             $('.delete-comment').submit(function (event) {
@@ -115,6 +123,7 @@
         <form action="AllPostsList" class="display-posts">
             <button type="submit">Show All Posts</button>
         </form>
+        <button id="hide-posts">Hide Posts</button>
         <div id="show-all-posts"></div>
     </div>
 
@@ -133,6 +142,7 @@
         <form action="AllCommentsList" class="display-comments">
             <button type="submit">Show All Comments</button>
         </form>
+        <button id="hide-comments">Hide Comments</button>
         <div id="show-all-comments"></div>
     </div>
 
