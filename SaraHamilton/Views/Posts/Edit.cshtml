@@ -7,7 +7,7 @@
 @model SaraHamilton.Models.Post
 
 
-<h4>Edit this Post :@Html.DisplayFor(model => model.Title)</h4>
+<h4>Edit this Post : @Html.DisplayFor(model => model.Title)</h4>
 
 @using (@Html.BeginForm())
 {
@@ -17,7 +17,7 @@
     @Html.EditorFor(model => model.Title)
 
     @Html.LabelFor(model => model.Content)
-    @Html.EditorFor(model => model.Content)
+    @Html.TextBoxFor(model => model.Content, new { style = "width:500px;" })
 
     <input type="submit" value="Save" class="btn btn-default" />
 }

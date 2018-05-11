@@ -38,26 +38,13 @@
                         var stringResult = '<ul>';
                         for (var i = 0; i < result.length; i++) 
                         {
-                            stringResult += '<li> id: ' + result[i].postId + ' <strong>' + result[i].title + '</strong> : ' + result[i].content + '<a href = "Posts/Edit/'+ result[i].postId +'">Edit</a></li>';
+                            stringResult += '<li> id: ' + result[i].postId + ' <strong>' + result[i].title + '</strong> : ' + result[i].content + '<a href = "Posts/Edit/'+ result[i].postId +'">  Edit</a></li>';
                         } 
                         stringResult += '</ul>';
                         $('#show-all-posts').html(stringResult);
                     }
                 });
             });
-
-            @*$('.display-edit-form').submit(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    url: '@Url.Action("Edit/")',
-                    type: 'GET',
-                    data: $(this).serialize(),
-                    dataType: 'json',
-                    success: function (result) {
-                        $('#result4').html(stringResult);
-                    }
-                });
-           });*@
 
             $('.delete-post').submit(function (event) {
                 event.preventDefault();
@@ -124,6 +111,7 @@
     </div>
 
     <div class="well">
+        <h2>View and Edit Posts</h2>
         <form action="AllPostsList" class="display-posts">
             <button type="submit">Show All Posts</button>
         </form>
@@ -141,6 +129,7 @@
     </div>
 
     <div class="well">
+        <h2>View Comments</h2>
         <form action="AllCommentsList" class="display-comments">
             <button type="submit">Show All Comments</button>
         </form>
