@@ -4,6 +4,7 @@ using SaraHamilton.Models;
 using SaraHamilton.Data;
 using System.Threading.Tasks;
 using SaraHamilton.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SaraHamilton.Controllers
 {
@@ -70,5 +71,6 @@ namespace SaraHamilton.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index");
         }
+
     }
 }
