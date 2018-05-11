@@ -18,11 +18,10 @@ namespace SaraHamilton.Models
         public string Language { get; set; }
         public string Location { get; set; }
 
-
         public static List<GitHubRepos> GetGitHubRepos()
         {
             var client = new RestClient("https://api.github.com");
-            var request = new RestRequest("https://api.github.com/users/Sara-Hamilton/starred?sort=created&direction=asc", MethodAccessException.GET) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest("https://api.github.com/users/Sara-Hamilton/starred?sort=created&direction=asc", Method.GET) { RequestFormat = DataFormat.Json };
             request.AddHeader("header", "application/vnd.github.v3+json");
             request.AddHeader("User-Agent", EnvironmentVariables.AccountUserAgent);
             var response = new RestResponse();
