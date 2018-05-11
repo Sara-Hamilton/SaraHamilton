@@ -113,8 +113,8 @@ $ dotnet run
 
 To login as an administrator:
 ```
-	email: Admin
-	password: supersecretpassword
+email: Admin
+password: supersecretpassword
 ```
 
 ### License
