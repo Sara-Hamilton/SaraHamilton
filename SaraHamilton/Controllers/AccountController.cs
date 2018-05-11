@@ -32,18 +32,21 @@ namespace SaraHamilton.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register([Bind("Name, Password, ConfirmPassword, Email")] RegisterViewModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email };
-            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                var user = new ApplicationUser { UserName = model.Email };
+                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            else
-            {
-                return View();
-            }
+                {
+                    return View();
+                }
         }
 
         public IActionResult Login()
