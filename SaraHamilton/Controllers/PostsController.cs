@@ -11,8 +11,7 @@ using SaraHamilton.Models;
 using SaraHamilton.Data;
 
 namespace SaraHamilton.Controllers
-{
-    [Authorize]
+{    
     public class PostsController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -24,13 +23,6 @@ namespace SaraHamilton.Controllers
             _db = db;
         }
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        //    var currentUser = await _userManager.FindByIdAsync(userId);
-        //    return View(_db.Posts.Where(x => x.User.Id == currentUser.Id));
-        //}
-
         public IActionResult Index()
         {
             return View(_db.Posts.Include(post => post.Comments));
@@ -41,6 +33,7 @@ namespace SaraHamilton.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(Post post)
         {
@@ -52,6 +45,7 @@ namespace SaraHamilton.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -60,6 +54,7 @@ namespace SaraHamilton.Controllers
             return View(postToEdit);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(Post post)
         {
