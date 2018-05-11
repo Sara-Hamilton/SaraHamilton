@@ -115,8 +115,8 @@ or open and run the solution from Visual Studio
 
 To login as an administrator:
 ```
-email: Admin
-password: supersecretpassword
+Name: Admin
+Password: supersecretpassword
 ```
 
 ### License
