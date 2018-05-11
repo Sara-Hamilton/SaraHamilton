@@ -35,3 +35,9 @@ textarea {
         display: none;
     }
 }
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: chocolate;
+    color: antiquewhite;
+}
