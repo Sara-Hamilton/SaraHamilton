@@ -29,7 +29,7 @@ namespace SaraHamilton.Controllers
             return View();
         }
 
-        public IActionResult GetGitHubRepos()
+        public IActionResult GitHub()
         {
             var userRepos = GitHubRepos.GetGitHubRepos();
             return View(userRepos);
