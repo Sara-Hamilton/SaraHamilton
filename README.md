@@ -5,7 +5,7 @@
 ## By Sara Hamilton
 
 # Description
-This is the Epicodus weekly project for weeks 3 and 4 of the .NET course.  Its purpose is to display understanding of Visual Studio MVC, ORM, Migrations, AJAX posts, and API calls.  It is a personal portfolio site containing information about me with links to my top 3 starred GitHub repositories.  This site allows for the creating of blog posts and comments.  All visitors to the site may view blog posts and comments and their authors. A visitor may comment on a blog post if they register and login.  Only an admin may create and edit blog posts and delete posts and comments.  
+This is the Epicodus weekly project for weeks 3 and 4 of the .NET course.  Its purpose is to display understanding of Visual Studio MVC, ORM, Migrations, User Authentication, AJAX posts, and API calls.  It is a personal portfolio site containing information about me with links to my top 3 starred GitHub repositories.  This site allows for the creating of blog posts and comments.  All visitors to the site may view blog posts and comments and their authors. A visitor may comment on a blog post if they register and login.  Only an admin may create and edit blog posts and delete posts and comments.  
 
 ## Functionality
 ### User Stories
@@ -52,7 +52,7 @@ This is the Epicodus weekly project for weeks 3 and 4 of the .NET course.  Its p
 
 ## Set up a GitHub account  
 
-Make a free GitHub account. 
+Make a free GitHub account. https://github.com
 
 ## Clone the Repository  
  ```
@@ -109,6 +109,8 @@ $ cd SaraHamilton
 ```
 $ dotnet run
 ```
+or open and run the solution from Visual Studio
+
 * _Administrator Functionality_
 
 To login as an administrator:
