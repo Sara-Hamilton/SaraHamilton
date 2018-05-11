@@ -16,7 +16,6 @@ namespace SaraHamilton.Models
         public string Created_At { get; set; }
         public string Description { get; set; }
         public string Language { get; set; }
-        public string Location { get; set; }
 
         public static List<GitHubRepos> GetGitHubRepos()
         {
