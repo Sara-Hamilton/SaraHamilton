@@ -5,14 +5,14 @@
 ## By Sara Hamilton
 
 # Description
-This is the Epicodus weekly project for weeks 3 and 4 of the .NET course.  Its purpose is to display understanding of Visual Studio MVC, ORM, Migrations, and AJAX posts.  It is a personal portfolio site containing information about me with links to my top 3 starred GitHub repositories.  This site allows for the creating of blog posts and comments.  All visitors to the site may view blog posts and comments and their authors. A visitor may comment on a blog post if they register and login.  Only an admin may create and edit blog posts and delete posts and comments.  
+This is the Epicodus weekly project for weeks 3 and 4 of the .NET course.  Its purpose is to display understanding of Visual Studio MVC, ORM, Migrations, AJAX posts, and API calls.  It is a personal portfolio site containing information about me with links to my top 3 starred GitHub repositories.  This site allows for the creating of blog posts and comments.  All visitors to the site may view blog posts and comments and their authors. A visitor may comment on a blog post if they register and login.  Only an admin may create and edit blog posts and delete posts and comments.  
 
 ## Functionality
 ### User Stories
 * a user can
   * view all blog posts and comments
   * click on a link to see comments pertaining to a post
-  * create comments for any blog post
+  * create comments for any blog post - if logged in
   
 * an admin can
   * create a post 
@@ -54,6 +54,11 @@ This is the Epicodus weekly project for weeks 3 and 4 of the .NET course.  Its p
 
 Make a free GitHub account. 
 
+## Clone the Repository  
+ ```
+  $ git clone https://github.com/Sara-Hamilton/SaraHamilton
+  ```
+
 ## Configure EnvironmentVariables
 
 Open the app solution in Visual Studio.  In the Models folder, create a class named EnvironmentVariables.cs  Add the following code to EnvironmentVariables.cs  Replace the text that is in all caps with your GitHub username or email.  
@@ -69,11 +74,6 @@ namespace SaraHamilton.Models
 ```
 
 ## Run the Application  
-
-  * _Clone the github respository_
-  ```
-  $ git clone https://github.com/Sara-Hamilton/SaraHamilton
-  ```
 
   * _Install the .NET Framework and MAMP_
 
